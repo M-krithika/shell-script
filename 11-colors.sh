@@ -15,6 +15,25 @@ N="\e[0m"
 echo "script started executing at: $TIMESTAMP"
 
 VALIDATE(){
+    echo "exit status: $1"
+    echo "what are you doing: $2"
+}
+
+if [ $USERID -ne 0]
+then
+    echo "please run this script with root access."
+    exit 1
+else
+    echo "you are super user"
+fi
+
+dnf install mysql -y &>>$LOGFILE
+VALIDATE $? "Installing mysql"
+
+dnf install git -y &>>$LOGFILE
+VALIDATE $? "Installing git"
+
+VALIDATE(){
 if [ $1 -ne 0 ]
 then
     echo -e "$2...$R FAILURE $N"
