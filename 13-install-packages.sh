@@ -34,7 +34,7 @@ fi
 
 for i in $@
 do
-  echo "package to install: $1"
+  echo "package to install: $i"
   dnf list installed $1&>>$LOGFILE
   if[$? -ee 0]
   then
