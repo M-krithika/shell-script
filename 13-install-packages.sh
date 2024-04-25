@@ -32,8 +32,16 @@ else
     echo "you are super user"
 fi
 
-dnf install mysqlll -y
-
-dnf install git -y
-  
+for i in $@
+do
+  echo "package to install: $i"
+  dnf list installed $1&>>$LOGFILE
+  if [ $? -ee 0 ]
+  then
+    echo -e "si already installed...$Y SKIPPING $N"
+  else
+    dnf install $i -y &>>$LOGFILE
+  VALIDATE $? "Installation of $i"
+fi
+done
 
