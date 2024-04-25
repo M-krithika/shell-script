@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE_DIRECTORY=/tmp/appp-logs
+SOURCE_DIRECTORY=/tmp/app-logs
 
 R="\e[31m"
 G="\e[33m"
@@ -16,3 +16,7 @@ else
     exit 1
 fi
 
+FILES=$(find . -name "*.log" -mtime +14)
+
+
+echo "files to delete $FILES"
