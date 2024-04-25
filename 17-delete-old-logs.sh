@@ -14,4 +14,5 @@ then
 else
     echo "$R please make sure $SOURCE_DIRECTORY exists $N"
     exit 1
+fi
 
